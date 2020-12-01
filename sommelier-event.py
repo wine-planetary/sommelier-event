@@ -7,10 +7,8 @@ import requests
 import urllib.parse
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from oauth2client.service_account import ServiceAccountCredentials
-
-# https://github.com/swen128/twitter-text-python
 from twitter_text import parse_tweet
+from oauth2client.service_account import ServiceAccountCredentials
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 env_path = os.path.join(os.path.dirname(rootdir), ".env")
@@ -36,7 +34,7 @@ def get_event_page(page):
     query = urllib.parse.urlencode(query_dict)
     url = urllib.parse.urlunparse((scheme, netloc, path, params, query, fragment))
     response = requests.get(url)
-    # 正しいリクエストが帰ってきた場合
+    # 正しいレスポンスが返ってきた場合
     if response.ok:
         soup = BeautifulSoup(response.text, "html.parser")
         return soup
@@ -66,7 +64,6 @@ def parse_event_page(soup):
         event_list.append(event_dict)
     return event_list
 
-# https://tanuhack.com/operate-spreadsheet/
 def write_spreadsheet(event_list):
     # spreadsheetにログイン
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
