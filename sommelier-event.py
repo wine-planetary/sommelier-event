@@ -17,7 +17,7 @@ load_dotenv(env_path)
 
 today = datetime.date.today()
 week = ["月", "火", "水", "木", "金", "土", "日"]
-target_venue = ["東京", "神奈川", "千葉", "埼玉", "本部"]
+target_venue = ["東京", "神奈川", "千葉", "埼玉", "本部", "賛助・友好団体"]
 
 scheme = "https"
 netloc = "www.sommelier.jp"
